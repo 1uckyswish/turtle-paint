@@ -3,6 +3,9 @@ package com.pluralsight.shapes;
 import com.pluralsight.forms.Turtle;
 import java.awt.Color;
 import java.awt.Point;
+import java.util.Map;
+
+import static com.pluralsight.MainApp.createColorMap;
 
 public class Square extends Shape {
     private static final int SIDE_LENGTH = 200; // constant side length for square
@@ -37,4 +40,16 @@ public class Square extends Shape {
         //Finally, the pen is lifted up to stop drawing.
         turtle.penUp();
     }
+
+    @Override
+    public String toString() {
+        return String.format("square|%d|%d|%d|%s|%d|%d",
+                (int) location.getX(),
+                (int) location.getY(),
+                border,
+                colorToString(color),
+                SIDE_LENGTH,
+                SIDE_LENGTH);
+    }
+
 }

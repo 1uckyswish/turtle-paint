@@ -39,4 +39,13 @@ public class Triangle extends Shape {
         //Finally, the pen is lifted up to stop drawing.
         turtle.penUp();
     }
+
+    @Override
+    public String toString() {
+        return String.format("triangle|%d|%d|%d|%s",
+                (int) location.getX(),
+                (int) location.getY(),
+                border,
+                colorToString(color));
+    }
 }

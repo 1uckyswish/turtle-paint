@@ -9,19 +9,23 @@ import com.pluralsight.shapes.Triangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.List;
 
 public class MainApp {
     static Scanner scanner = new Scanner(System.in);
     static Map<String, Color> colorMap = createColorMap();
     static boolean shapesAdded = false; // Initialize to false
     static World world; // Define world at the class level
+    static List<Shape> shapes = new ArrayList<>();
     public static void main(String[] args) {
         displayHomeScreen();
     }
@@ -30,8 +34,12 @@ public class MainApp {
         System.out.println("Welcome to Turtle Painter");
         System.out.println("1) Add Shape");
         System.out.println("2) Save Image");
+        System.out.println("3) Save Painting");
+        System.out.println("4) Open Painting");
         System.out.println("0) Exit");
         System.out.print("Please Choose: ");
+
+
         String userOption = scanner.nextLine().trim();
 
         switch (userOption) {
@@ -41,12 +49,46 @@ public class MainApp {
             case "2":
                 saveImage();
                 break;
+            case "3":
+                writeToFile();
+                break;
             case "0":
                 System.out.println("Exiting...");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Sorry, please choose one of the options above");
                 displayHomeScreen();
+        }
+    }
+
+
+    public static void writeToFile() {
+        String fileName = "paint.csv";
+        File file = new File(fileName);
+
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            // Write the headers if the file is empty or doesn't exist
+            if (!file.exists() || file.length() == 0) {
+                writer.write("width|height|background");
+                writer.newLine();
+                writer.write("1200|800|white");
+                writer.newLine();
+                writer.write("shape|x|y|border|color|width|height");
+                writer.newLine();
+            }
+
+            for (Shape shape : shapes) {
+                writer.write(shape.toString());
+                writer.newLine();
+            }
+            writer.flush();
+            writer.close();
+            displayHomeScreen();
+        } catch (Exception e) {
+            System.out.println("An error occurred while writing to file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -91,18 +133,21 @@ public class MainApp {
             case "1":
                 Square square = new Square(new Point(userX, userY), shapeColor, userBorder);
                 square.paint(turtle);
+                shapes.add(square);
                 shapesAdded = true; // Set shapesAdded to true after a shape is added
                 displayHomeScreen();
                 break;
             case "2":
                 Circle circle = new Circle(new Point(userX, userY), shapeColor, userBorder, userRadius);
                 circle.paint(turtle);
+                shapes.add(circle);
                 shapesAdded = true; // Set shapesAdded to true after a shape is added
                 displayHomeScreen();
                 break;
             case "3":
                 Triangle triangle = new Triangle(new Point(userX, userY), shapeColor, userBorder);
                 triangle.paint(turtle);
+                shapes.add(triangle);
                 shapesAdded = true; // Set shapesAdded to true after a shape is added
                 displayHomeScreen();
                 break;
@@ -124,7 +169,7 @@ public class MainApp {
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = dateTime.format(formatter);
-        world.saveAs("/Users/butterflycoupe/Desktop/YearUp/turtle-paint/turtle-paint/canvas/" + formattedDateTime + ".png");
+        world.saveAs("/Users/butterflycoupe/Desktop/YearUp/turtle-paint/canvas/" + formattedDateTime + ".png");
         System.out.println("Image saved successfully!");
         displayHomeScreen();
     }
@@ -146,4 +191,5 @@ public class MainApp {
         map.put("YELLOW", Color.YELLOW);
         return map;
     }
+
 }

@@ -42,6 +42,14 @@ public class Circle extends Shape {
         turtle.penUp();
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("circle|%d|%d|%d|%s|%d",
+                (int) location.getX(),
+                (int) location.getY(),
+                border,
+                colorToString(color),
+                radius);
+    }
 
 }
