@@ -9,16 +9,14 @@ import com.pluralsight.shapes.Triangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class MainApp {
     static Scanner scanner = new Scanner(System.in);
@@ -52,6 +50,9 @@ public class MainApp {
             case "3":
                 writeToFile();
                 break;
+            case "4":
+                readFromFile();
+                break;
             case "0":
                 System.out.println("Exiting...");
                 System.exit(0);
@@ -62,6 +63,52 @@ public class MainApp {
         }
     }
 
+    public static void readFromFile(){
+        String fileName = "paint.csv";
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            // Skip the first three lines
+            for (int i = 0; i < 3; i++) {
+                reader.readLine();
+            }
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] shapeInfo = line.split(Pattern.quote("|"));
+                writeObjects(shapeInfo);
+            }
+
+        }catch (Exception e) {
+            System.out.println("An error occurred while writing to file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeObjects(String[] shapeInfo){
+
+        Turtle turtle = new Turtle(world);
+        int x = Integer.parseInt(shapeInfo[1]);
+        int y = Integer.parseInt(shapeInfo[2]);
+        Color color = Color.decode(shapeInfo[4]);
+        int border = Integer.parseInt(shapeInfo[3]);
+        int radius = Integer.parseInt(shapeInfo[5]);
+        switch (shapeInfo[0]) {
+            case "square":
+                Square square = new Square(new Point(x, y), color ,border);
+                square.paint(turtle);
+                displayHomeScreen();
+                break;
+            case "circle":
+                Circle circle = new Circle(new Point(x, y), color, border, radius );
+                circle.paint(turtle);
+                displayHomeScreen();
+                break;
+            case "triangle":
+                Triangle triangle = new Triangle(new Point(x, y), color ,border);
+                triangle.paint(turtle);
+                displayHomeScreen();
+                break;
+        }
+    }
 
     public static void writeToFile() {
         String fileName = "paint.csv";
