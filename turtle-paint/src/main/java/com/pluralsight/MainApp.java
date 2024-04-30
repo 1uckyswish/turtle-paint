@@ -1,3 +1,8 @@
+package com.pluralsight;
+
+import com.pluralsight.forms.Turtle;
+import com.pluralsight.forms.World;
+
 import java.awt.*;
 
 public class MainApp
@@ -10,7 +15,7 @@ public class MainApp
         // The world is your canvas
         World world = new World(200, 200);
         Turtle turtle = new Turtle(world,-100, -100);
-        
+
         int width = 200;
         int height = 200;
 
