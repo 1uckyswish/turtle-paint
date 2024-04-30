@@ -2,41 +2,26 @@ package com.pluralsight;
 
 import com.pluralsight.forms.Turtle;
 import com.pluralsight.forms.World;
+import com.pluralsight.shapes.*;
 
 import java.awt.*;
 
-public class MainApp
-{
-    public static void main(String[] args)
-    {
-        // This starter code to get you familiar with how
-        // the TurtleLogo application works
+public class MainApp {
+    public static void main(String[] args) {
+        // Get the screen dimensions
 
-        // The world is your canvas
-        World world = new World(200, 200);
-        Turtle turtle = new Turtle(world,-100, -100);
+        // Create the world with the screen dimensions
+        World world = new World(1200, 800);
 
-        int width = 200;
-        int height = 200;
+        Turtle turtle = new Turtle(world);
 
-        // calculate the hypotenuse (diagonal)
-        // a2 + b2 = c2
-        double widthSquared = Math.pow(width, 2);
-        double heightSquared = Math.pow(height, 2);
-        double hypotenuse = Math.sqrt(widthSquared + heightSquared);
+        // Create a circle instance
+        Circle circle = new Circle(new Point(50, 150), Color.RED, 2, 50);
 
+        // Draw the circle on the canvas
+        circle.paint(turtle);
 
-        turtle.setPenWidth(3);
-        turtle.setColor(Color.GREEN);
-
-        turtle.turnRight(45);
-        turtle.forward(hypotenuse);
-
-        turtle.penUp();
-        turtle.goTo(100, 100);
-        turtle.turnRight(90);
-
-        turtle.penDown();
-        turtle.forward(hypotenuse);
+        Square square = new Square(new Point(200, 120), Color.BLUE, 2);
+        square.paint(turtle);
     }
 }
