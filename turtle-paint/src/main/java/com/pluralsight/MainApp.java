@@ -112,6 +112,7 @@ public class MainApp {
     }
 
 
+
     public static void writeToFile() {
         String fileName = "paint.csv";
         File file = new File(fileName);
