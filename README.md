@@ -104,3 +104,14 @@ This is the main screen of the Turtle Paint interface, offering users a variety 
   - Validate user input when selecting a shape option from the menu.
   - If the user enters an invalid option, display an error message and prompt the user to choose a valid option from the menu.
 
+<img width="1440" alt="Screenshot 2024-05-01 at 10 33 18 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/6da7b1e2-f97f-41ba-9f9f-106490893297">
+
+<img width="1440" alt="Screenshot 2024-05-01 at 10 33 26 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/67ee64a6-cd23-42fb-ab38-651b2cdefafe">
+
+### Phase 5 - Interesting Code Features
+
+Using a HashMap in the createColorMap() method efficiently maps string representations of color names to their respective Color objects. With its key-value pair structure, each color name is directly associated with its corresponding Color object, enabling fast retrieval.
+
+<img width="1440" alt="Screenshot 2024-05-01 at 10 37 19 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/e4e93247-6576-4d40-ba99-edae197e2a40">
+
+
