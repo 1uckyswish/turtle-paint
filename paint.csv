@@ -2,4 +2,5 @@ width|height|background
 1200|800|white
 shape|x|y|border|color|width|height
 square|5|5|5|BLACK|200|200
-triangle|5|5|5|BLACK
+triangle|5|5|5|BLACK|200|200
+circle|2|2|2|BLACK|2

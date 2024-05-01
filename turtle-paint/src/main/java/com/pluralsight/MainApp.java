@@ -74,41 +74,43 @@ public class MainApp {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] shapeInfo = line.split(Pattern.quote("|"));
-                writeObjects(shapeInfo);
+                paintShape(shapeInfo); // Paint each shape to a new canvas
             }
-
-        }catch (Exception e) {
+            reader.close(); // Close the reader when done
+        } catch (Exception e) {
             System.out.println("An error occurred while writing to file: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public static void writeObjects(String[] shapeInfo){
-
-        Turtle turtle = new Turtle(world);
+    public static void paintShape(String[] shapeInfo) {
         int x = Integer.parseInt(shapeInfo[1]);
         int y = Integer.parseInt(shapeInfo[2]);
-        Color color = Color.decode(shapeInfo[4]);
+        Color color = colorMap.get(shapeInfo[4]);
         int border = Integer.parseInt(shapeInfo[3]);
         int radius = Integer.parseInt(shapeInfo[5]);
+
+        World world = new World(1200, 800); // Create a new canvas for each shape
+        Turtle turtle = new Turtle(world);
+
         switch (shapeInfo[0]) {
             case "square":
                 Square square = new Square(new Point(x, y), color ,border);
                 square.paint(turtle);
-                displayHomeScreen();
                 break;
             case "circle":
-                Circle circle = new Circle(new Point(x, y), color, border, radius );
+                Circle circle = new Circle(new Point(x, y), color, border, radius);
                 circle.paint(turtle);
-                displayHomeScreen();
                 break;
             case "triangle":
-                Triangle triangle = new Triangle(new Point(x, y), color ,border);
+                Triangle triangle = new Triangle(new Point(x, y), color, border);
                 triangle.paint(turtle);
-                displayHomeScreen();
                 break;
+            default:
+                System.out.println("Unknown shape type: " + shapeInfo[0]);
         }
     }
+
 
     public static void writeToFile() {
         String fileName = "paint.csv";
