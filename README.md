@@ -22,7 +22,7 @@ This is the heart of our Turtle Paint project. The Main class manages all store 
     - Square
     - Triangle
     - Circle
-    - 
+      
 <img width="1440" alt="Screenshot 2024-05-01 at 9 56 28 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/c6fe9511-a412-4299-a146-0ed53c3ae905">
 
 <img width="1440" alt="Screenshot 2024-05-01 at 9 56 55 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/f1e8c90f-9159-47b4-8700-40396fd51df8">
@@ -78,3 +78,29 @@ This is the main screen of the Turtle Paint interface, offering users a variety 
   - Read the contents of the selected CSV file.
   - Recreate the canvas based on canvas information from the file.
   - Paint each shape according to the stored details.
+ 
+
+<img width="1440" alt="Screenshot 2024-05-01 at 10 28 22 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/f108d964-314c-472b-af3a-ed1d7650662e">
+
+  <img width="1440" alt="Screenshot 2024-05-01 at 10 28 38 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/afd87ce2-3c40-4e47-ac22-ac547c1b132c">
+
+<img width="1440" alt="Screenshot 2024-05-01 at 10 28 57 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/0192116a-9917-4f45-bb48-a5b644e46dc7">
+
+<img width="1440" alt="Screenshot 2024-05-01 at 10 29 23 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/3ac19e4a-3933-483f-b73f-5c56bd0ef3e6">
+
+<img width="1440" alt="Screenshot 2024-05-01 at 10 29 32 AM" src="https://github.com/1uckyswish/turtle-paint/assets/107442415/6406639e-905a-482f-990a-85b89c15c0d5">
+
+### Phase 4 - Error Handling
+
+#### Error Handling for Saving and Opening Paintings
+- Ensure that the application checks if there are shapes to save before proceeding with saving the painting to a CSV file. If the canvas is empty or no shapes have been drawn, prompt the user with an appropriate message indicating that there are no shapes to save.
+- Implement error handling to address scenarios where the user selects a shape option that is not provided in the menu. If the user enters an invalid shape option, display an error message and prompt the user to choose a valid option from the menu.
+
+#### Implementation Details
+- **Error Handling for Saving Painting**:
+  - Check if the list of shapes is empty before attempting to save the painting.
+  - Display a message if no shapes are present, informing the user that there are no shapes to save.
+- **Error Handling for Selecting Shape Option**:
+  - Validate user input when selecting a shape option from the menu.
+  - If the user enters an invalid option, display an error message and prompt the user to choose a valid option from the menu.
+
