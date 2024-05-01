@@ -93,6 +93,10 @@ public class MainApp {
 
     // Method to paint a shape based on the provided data
     public static void paintShape(String[] shapeInfo) {
+        if (shapeInfo.length < 6) {
+            System.out.println("Invalid shape information: " + Arrays.toString(shapeInfo));
+            return;
+        }
         int x = Integer.parseInt(shapeInfo[1]);
         int y = Integer.parseInt(shapeInfo[2]);
         Color color = colorMap.get(shapeInfo[4]);
@@ -192,7 +196,10 @@ public class MainApp {
         scanner.nextLine(); // Consume newline
 
         // Create a new canvas for each shape
-        World world = new World(1200, 800); // Create a new canvas for each shape
+        if (world == null) {
+            world = new World(1200, 800); // Initialize the world with width and height
+        }
+//        World world = new World(1200, 800); // Create a new canvas for each shape
         Turtle turtle = new Turtle(world);
 
         // Depending on what the user chooses as the shape to draw, call the respective shape constructor

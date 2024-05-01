@@ -43,10 +43,12 @@ public class Triangle extends Shape {
 
     @Override
     public String toString() {
-        return String.format("triangle|%d|%d|%d|%s",
+        return String.format("triangle|%d|%d|%d|%s|%d|%d",
                 (int) location.getX(),
                 (int) location.getY(),
                 border,
-                colorToString(color));
+                colorToString(color),
+                SIDE_LENGTH,
+                SIDE_LENGTH);
     }
 }
