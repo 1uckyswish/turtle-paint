@@ -21,7 +21,8 @@ public abstract class Shape {
     public abstract void paint(Turtle turtle);
 
     protected String colorToString(Color color) {
-        if (color == null) return "unknown";
+        if (color == null)
+            return "unknown";
 
         // Map known colors to string representations
         Map<String, Color> colorMap = createColorMap();
