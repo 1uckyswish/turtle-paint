@@ -24,14 +24,15 @@ public class Square extends Shape {
 
         // Move the turtle to the starting position
         turtle.penUp();
+        // Set the color and draw the square
+        turtle.setColor(color);
+        // Set Border for shape
+        turtle.setPenWidth(border);
         // * Stops the turtle from leaving a trail.
         turtle.goTo(x - SIDE_LENGTH / 2, y - SIDE_LENGTH / 2); // Move to the starting corner
         turtle.turnRight(90); // Turn the turtle to face right
         // * Causes the turtle to leave a trail.
         turtle.penDown();
-
-        // Set the color and draw the square
-        turtle.setColor(color);
         // Loops three four and draws each side of the square
         for (int i = 0; i < 4; i++) {
             turtle.forward(SIDE_LENGTH);

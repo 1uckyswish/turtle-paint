@@ -22,7 +22,10 @@ public class Circle extends Shape {
         int x = (int) location.getX();
         int y = (int) location.getY();
         int diameter = radius * 2;
-
+        // Set the color and draw the circle
+        turtle.setColor(color);
+        // Set Border for shape
+        turtle.setPenWidth(border);
         // Move the turtle to the starting position
         turtle.penUp();
         // * Stops the turtle from leaving a trail.
@@ -31,8 +34,6 @@ public class Circle extends Shape {
         // * Causes the turtle to leave a trail.
         turtle.penDown();
 
-        // Set the color and draw the circle
-        turtle.setColor(color);
         // Loops to draw every line of a circle and draws each radius of the circle
         for (int i = 0; i < 36; i++) { // Reduce the number of steps to 36
             turtle.forward(diameter * Math.PI / 18); // Divide 360 by 36

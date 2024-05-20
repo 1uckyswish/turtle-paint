@@ -24,14 +24,15 @@ public class Triangle extends Shape {
         // Move the turtle to the starting position
         // * Stops the turtle from leaving a trail.
         turtle.penUp();
+        // Set the color and draw the triangle
+        turtle.setColor(color);
+        // Set Border for shape
+        turtle.setPenWidth(border);
         turtle.goTo(x - SIDE_LENGTH / 2, y - (int) (Math.sqrt(3) * SIDE_LENGTH / 6)); // Move to the left corner of the
         // base
         turtle.turnRight(30); // Turn the turtle to face upwards
         // * Causes the turtle to leave a trail.
         turtle.penDown();
-
-        // Set the color and draw the triangle
-        turtle.setColor(color);
         // Loops three times and draws each side of the triangle
         for (int i = 0; i < 3; i++) {
             turtle.forward(SIDE_LENGTH);
